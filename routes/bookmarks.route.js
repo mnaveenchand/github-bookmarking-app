@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const axios = require('axios');
 
-let bookmarksarray=[];
+let bookmarksarray=[]; // an array to save bookmarks
+
 router.get('/search',async(request, response)=> {
   try {
       let searchid =request.query.id;
