@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const axios = require('axios')
+const axios = require('axios');
 
 let bookmarksarray=[];
 router.get('/search',async(request, response)=> {
@@ -37,11 +37,11 @@ router.get('/search',async(request, response)=> {
     try{
       let removeid = request.query.id;
       for( let i = 0; i < bookmarksarray.length; i++){ 
-        if ( bookmarksarray[i].reposid === removeid) {
+        if (bookmarksarray[i].reposid === removeid) {
           bookmarksarray.splice(i, 1); 
         }
      }
-      response.send(`${removeid} removed successfully`)
+      response.send(`removed bookmark ${removeid} successfully`)
       console.log(bookmarksarray)
     }
     catch(err){
