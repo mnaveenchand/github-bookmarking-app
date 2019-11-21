@@ -3,20 +3,21 @@ const axios = require('axios');
 
 let bookmarksarray=[]; // an array to save bookmarks
 
-router.get('/search',async(request, response)=> {
+router.get('/bookmark/:id',async(request, response)=> {
   try {
-      let searchid =request.query.id;
-      let searchparams = request.query.label
-      let url_api= `https://api.github.com/search/labels?repository_id=${searchid}&q=${searchparams}`
-      const reposjson = await axios.get(url_api,{headers: {'Accept': 'application/vnd.github.symmetra-preview+json'}});
-      console.log("list repos: ",reposjson.data.items);
+      let bookmarkid =request.params.id;
+      let url_api= `https://api.github.com/repositories/${bookmarkid}`
+      const reposjson = await axios.get(url_api,{headers: {'Accept': '*.*'/* 'application/vnd.github.symmetra-preview+json' */}});
+      //console.log("list repos: ",reposjson);
       let data ={
-        reposid:searchid,
-        label :searchparams,
-        bookmarkData:reposjson.data.items
+        reposid: reposjson.data.id,
+        name: reposjson.data.name,
+        owner: reposjson.data.owner.login,
+        stars: reposjson.data.stargazers_count,
+        forks: reposjson.data.forks_count
       }
       bookmarksarray.push(data)
-      response.send(`${searchid} added to bookmarks list`)
+      response.send(`${bookmarkid} added to bookmarks list`)
       console.log(bookmarksarray)
     } catch (error) {
       console.error(error);
@@ -26,7 +27,7 @@ router.get('/search',async(request, response)=> {
   
   router.get('/list', (request,response)=>{
     try{
-      response.send(bookmarksarray)
+      response.json(bookmarksarray)
     }
     catch(err){
       response.send('error in loading bookmarks')
@@ -37,11 +38,9 @@ router.get('/search',async(request, response)=> {
   router.delete('/remove',(request, response) => {
     try{
       let removeid = request.query.id;
-      for( let i = 0; i < bookmarksarray.length; i++){ 
-        if (bookmarksarray[i].reposid === removeid) {
-          bookmarksarray.splice(i, 1); 
-        }
-     }
+      console.log("removeid:", removeid)
+      const index = bookmarksarray.findIndex(x => x.reposid === removeid);
+      if (index !== undefined) bookmarksarray.splice(index, 1);
       response.send(`removed bookmark ${removeid} successfully`)
       console.log(bookmarksarray)
     }
@@ -50,5 +49,7 @@ router.get('/search',async(request, response)=> {
       console.error(err);
     }
   });
+  
 
-module.exports = router;
+
+module.exports = router, bookmarksarray;
