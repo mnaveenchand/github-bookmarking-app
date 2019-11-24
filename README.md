@@ -11,6 +11,7 @@ Optional parameters: sort,order, valid qualifiers
 Limitations*: 
 	1. Search string cannot more than 256 characters
 	2. Should not have more than five AND, OR, NOT
+
 *[search guidelines](https://developer.github.com/v3/search/#search-repositories)
   
   
