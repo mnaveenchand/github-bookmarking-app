@@ -21,7 +21,6 @@ router.get('/search',async(request, response)=> {
                 bookmark: Bookmarkstatus(git_response.data.items[ele].id)
               })
         }
-        console.log(typeof(data_resp[0].reposid))
         response.json(data_resp)
 
     } catch (error) {

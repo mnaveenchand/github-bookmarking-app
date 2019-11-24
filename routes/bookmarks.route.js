@@ -7,7 +7,6 @@ router.get('/bookmark/:id',async(request, response)=> {
       let bookmarkid =request.params.id;
       let url_api= `https://api.github.com/repositories/${bookmarkid}`
       const reposjson = await axios.get(url_api,{headers: {'Accept': 'application/vnd.github.symmetra-preview+json'}});
-      //console.log("list repos: ",reposjson);
       let data ={
         reposid: reposjson.data.id,
         name: reposjson.data.name,
@@ -29,7 +28,6 @@ router.get('/bookmark/:id',async(request, response)=> {
     });
       }); 
       response.send(`${bookmarkid} added to bookmarks list`)
-      //console.log(bookmarksarray)
     } catch (error) {
       console.error(error);
   }
@@ -40,9 +38,7 @@ router.get('/bookmark/:id',async(request, response)=> {
     try{
       let data = fs.readFileSync('./Bookmarks.json');
       let bookmark_json = JSON.parse(data);
-      //console.log(bookmark_json)
       response.json(bookmark_json)
-      //response.json(bookmarksarray)
     }
     catch(err){
       response.send('error in loading bookmarks')
@@ -53,7 +49,6 @@ router.get('/bookmark/:id',async(request, response)=> {
   router.get('/remove',(request, response) => {
     try{
       let removeid = request.query.id;
-      console.log("removeid:", typeof(removeid))
       fs.readFile('./Bookmarks.json', (err, data) => {
         if (err) throw err;
         let bookmark_json = JSON.parse(data);        
@@ -64,7 +59,6 @@ router.get('/bookmark/:id',async(request, response)=> {
             console.error(err);
             return;
           };
-          console.log("File has been updated");
         });
       }); 
       response.json({"data":`removed bookmark ${removeid} successfully`, "status":"success"})
