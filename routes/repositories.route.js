@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const axios = require('axios');
-let bookmarksarray = require('./bookmarks.route')
+let fs = require('fs')
+
+let booksmarksRaw = fs.readFileSync('./Bookmarks.json');
+let bookmarklist = JSON.parse(booksmarksRaw);
 
 router.get('/search',async(request, response)=> {
     try {
@@ -18,23 +21,16 @@ router.get('/search',async(request, response)=> {
                 bookmark: Bookmarkstatus(git_response.data.items[ele].id)
               })
         }
-        console.log(data_resp)
-        console.log(bookmarksarray)
+        console.log(typeof(data_resp[0].reposid))
         response.json(data_resp)
 
     } catch (error) {
         console.error(error);
     }
 });
+
 function Bookmarkstatus(repositoryid){
-    for(ele in bookmarksarray){
-      if(repositoryid===bookmarksarray[ele].reposid){
-        //console.log(bookmarksarray)
-        return true;
-      }
-      else return false;
-    }
+  const index = bookmarklist.findIndex(x => x.reposid === Number(repositoryid));
+  if(index>=0) {return true} else {return false};
   }
-
-
 module.exports = router;
