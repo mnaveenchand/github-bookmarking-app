@@ -1,8 +1,10 @@
 # conradchallenge
 Restful endpoints to bookmark git repositories
 Start the service using node index from command line
-Endpoints
 
+`C:\conradchallenge>node index`
+
+Endpoints
 1. GET http://localhost:3000/listallrepos/search/?id=<searchstring> returns json response of reposid, name, owner, forks, stars
 
 searchstring = <String> (required)
