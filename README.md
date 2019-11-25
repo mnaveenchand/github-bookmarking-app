@@ -1,6 +1,6 @@
 # conradchallenge
 Restful endpoints to bookmark git repositories
-Start the service using node index from command line
+Start the service using node from command line
 
 `C:\conradchallenge>node index`
 Using the endpoints are briefly explained in the following table
