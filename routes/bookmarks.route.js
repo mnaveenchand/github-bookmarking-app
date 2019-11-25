@@ -22,14 +22,17 @@ router.get('/bookmark/:id',async(request, response)=> {
         fs.writeFile('./Bookmarks.json', JSON.stringify(arr, null, 2), (err) => {
         if (err) {
             console.error(err);
-            return;
+            return "unable to locate/read the file";
         };
         console.log("File has been updated");
     });
       }); 
       response.send(`${bookmarkid} added to bookmarks list`)
     } catch (error) {
-      console.error(error);
+      console.error(error.response.status, error.response.statusText);
+      if(error.response.status===404){
+        response.json({"status": error.response.statusText, "Description" :"Please enter a valid repository id"})
+      }
   }
 
 });

@@ -1,10 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
 let fs = require('fs')
-
-let booksmarksRaw = fs.readFileSync('./Bookmarks.json');
-let bookmarklist = JSON.parse(booksmarksRaw);
-
 router.get('/search',async(request, response)=> {
     try {
         let searchstring =request.params.searchterm;
@@ -29,7 +25,9 @@ router.get('/search',async(request, response)=> {
 });
 
 function Bookmarkstatus(repositoryid){
-  const index = bookmarklist.findIndex(x => x.reposid === Number(repositoryid));
-  if(index>=0) {return true} else {return false};
-  }
+    let booksmarksRaw = fs.readFileSync('./Bookmarks.json');
+    let bookmarklist = JSON.parse(booksmarksRaw);
+    const index = bookmarklist.findIndex(x => x.reposid === Number(repositoryid));
+    if(index>=0) {return true} else {return false};
+}
 module.exports = router;
