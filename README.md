@@ -28,7 +28,8 @@ for fetching list of repositories matching the string helloworld
 
 https://gitbookmarkmanager.herokuapp.com/listallrepos/search/?searchterm=helloworld
 
-the response is  ` [
+the response is  
+` [
 {
 reposid: 123808966,
 name: "undefined-is-a-function",
@@ -270,14 +271,17 @@ forks: 3,
 bookmark: false
 }
 ] `
-bookmark filed indicates if the particular repository is either by bookmarked or not by a boolean.
+
+Note: bookmark field in response indicates if the particular repository is either by bookmarked or not by a boolean.
 
 2. A particular repository can be bookmarked by its id with response as follows
 https://gitbookmarkmanager.herokuapp.com/bookmarks/bookmark/32726038
-with response `32726038 added to bookmarks list`
+with response 
+`32726038 added to bookmarks list`
 
 3.For List of all bookmarks, the end point  is 
 https://gitbookmarkmanager.herokuapp.com/bookmarks/list and response is 
+
 `[
 {
 reposid: 171660097,
@@ -305,7 +309,9 @@ forks: 0
 4. To remove a bookmark with repository id, call
 https://gitbookmarkmanager.herokuapp.com/bookmarks/remove/?id=123808
 
-with response as `{"data":"removed bookmark 123808 successfully","status":"success"}`
+with response as 
+`{"data":"removed bookmark 123808 successfully","status":"success"}`
+
 Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
 
