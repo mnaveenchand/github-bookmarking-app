@@ -314,5 +314,7 @@ with response as
 
 Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
-
-
+Taking this project further
+1. Implementing OAuth
+2. Frontend with React and Redux 
+...will be updated
