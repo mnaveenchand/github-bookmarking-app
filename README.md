@@ -1,6 +1,20 @@
 # conradchallenge
-Restful endpoints to bookmark git repositories
-Start the service using node from command line
+
+This App is a RESTful service to manage github bookmarks and tasks involves 
+
+1. Backend
+2. Frontend
+
+Backend part has the following purposes.
+
+1. An endpoint that takes a search term and returns a list of repositories.
+2. An endpoint that allows bookmarking a repository by its id.
+3. An endpoint to get all bookmarked repositories
+4. An endpoint to remove a bookmark
+
+Requirements: [Nodejs](https://nodejs.org/en/) , [Express](https://expressjs.com/)
+
+Start the service using node from command line.
 
 `C:\conradchallenge>node index`
 Using the endpoints are briefly explained in the following table
@@ -22,7 +36,7 @@ Optional parameters: sort,order, valid qualifiers
 
 *[search guidelines](https://developer.github.com/v3/search/#search-repositories)
 
-The app is deployed on heroku and functional. 
+The App's functional backend code is deployed on heroku. 
 
 for fetching list of repositories matching the string helloworld
 
