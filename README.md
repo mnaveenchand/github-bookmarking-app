@@ -3,25 +3,24 @@ Restful endpoints to bookmark git repositories
 Start the service using node index from command line
 
 `C:\conradchallenge>node index`
+Using the endpoints are briefly explained in the following table
 
-Endpoints
-1. GET /listallrepos/search/?searchterm=searchstring returns json response of reposid, name, owner, forks, stars
-
+ |http verb| endpoint | description |
+ |---------|:--------:|------------:|
+ |GET	   | `/listallrepos/search/?searchterm=searchstring`* | json response with reposid, name, owner, forks, stars 	| 
+ |GET	   | `/bookmarks/list`				     | gives list of bookmarked repositories		     	|
+ |GET	   | `/bookmarks/bookmark/:repository_id`	     | allows bookmarking a repository by its id.       	|
+ |GET	   | `/bookmarks/remove/?id=repository_id`	     | to delete the bookmark of a repository by its id 	|
+ 
+ 
 searchstring = <String> (required)
 Optional parameters: sort,order, valid qualifiers
 
-Limitations*: 
-	1. Search string cannot more than 256 characters
-	2. Should not have more than five AND, OR, NOT
+*Limitations: 
+1. Search string cannot more than 256 characters
+2. Should not have more than five AND, OR, NOT
 
 *[search guidelines](https://developer.github.com/v3/search/#search-repositories)
-  
-  
-2. GET /bookmarks/:repository_id  allows bookmarking a repository by its id.
-
-3. GET /bookmarks/remove/?id=repository_id to delete the bookmark of a repository by its id
-
-4. GET /bookmarks/list gives list of bookmarked repositories
 
 The app is deployed on heroku and functional. 
 
