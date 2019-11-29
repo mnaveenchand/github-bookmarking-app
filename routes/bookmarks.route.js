@@ -7,12 +7,13 @@ router.get('/bookmark/:id',async(request, response)=> {
       let bookmarkid =request.params.id;
       let url_api= `https://api.github.com/repositories/${bookmarkid}`
       const reposjson = await axios.get(url_api,{headers: {'Accept': 'application/vnd.github.symmetra-preview+json'}});
+      let {id, name,login, stargazers_count, forks_count} =reposjson.data;
       let data ={
-        reposid: reposjson.data.id,
-        name: reposjson.data.name,
-        owner: reposjson.data.owner.login,
-        stars: reposjson.data.stargazers_count,
-        forks: reposjson.data.forks_count
+        reposid: id,
+        name: name,
+        owner: login,
+        stars: stargazers_count,
+        forks: forks_count
       }
       let arr;
       fs.readFile('./Bookmarks.json', (err, dat) => {
