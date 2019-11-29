@@ -8,13 +8,14 @@ router.get('/search',async(request, response)=> {
         const git_response = await axios.get(url_api,{headers: {'content-type': 'application/json'}});
         let data_resp=[]
         for(ele in git_response.data.items){
+            let {id, name, login, watchers, forks} = git_response.data.items[ele]
             data_resp.push({
-                reposid: git_response.data.items[ele].id,
-                name: git_response.data.items[ele].name,
-                owner: git_response.data.items[ele].owner.login,
-                stars: git_response.data.items[ele].watchers,
-                forks: git_response.data.items[ele].forks,
-                bookmark: Bookmarkstatus(git_response.data.items[ele].id)
+                reposid: id,
+                name: name,
+                owner: login,
+                stars: watchers,
+                forks: forks,
+                bookmark: Bookmarkstatus(id)
               })
         }
         response.json(data_resp)
