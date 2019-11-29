@@ -25,7 +25,8 @@ Using the endpoints are briefly explained in the following table
  |GET	   | `/bookmarks/list`				     | gives list of bookmarked repositories		     	|
  |GET	   | `/bookmarks/bookmark/:repository_id`	     | allows bookmarking a repository by its id.       	|
  |GET	   | `/bookmarks/remove/?id=repository_id`	     | to delete the bookmark of a repository by its id 	|
- 
+ |POST     |`/userauth/users`                            | Signup with username, password                         |
+ |POST     |`/userauth/users/login`                      | to login with name, password                         |
  
 searchstring = <String> (required)
 Optional parameters: sort,order, valid qualifiers
@@ -329,6 +330,6 @@ with response as
 Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
 Taking this project further
-1. Implementing OAuth
+1. Implementing OAuth (updated)
 2. Frontend with React and Redux 
 ...will be updated

@@ -5,7 +5,7 @@ const users = []
 router.post('/users', async (req, res) => {
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      const user = { name: req.body.name, password: hashedPassword }
+      const user = { username: req.body.username, password: hashedPassword }
       users.push(user)
       res.status(201).send("Success")
     } catch {
@@ -14,7 +14,7 @@ router.post('/users', async (req, res) => {
   })
 
   router.post('/users/login', async (req, res) => {
-    const user = users.find(user => user.name === req.body.name)
+    const user = users.find(user => user.username === req.body.username)
     if (user == null) {
       return res.status(400).send('Cannot find user')
     }
@@ -22,10 +22,10 @@ router.post('/users', async (req, res) => {
       if(await bcrypt.compare(req.body.password, user.password)) {
         res.send('Success')
       } else {
-        res.send('Not Allowed')
+        res.send('Enter valid password')
       }
     } catch {
-      res.status(500).send()
+      res.status(500).send("Login failed")
     }
   })
 
