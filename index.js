@@ -26,7 +26,8 @@ app.listen(port, () => console.log(`Server Listening on port ${port}`));
 
 const listrepositoriesRoutes = require('./routes/repositories.route');
 const bookmarksRoutes = require('./routes/bookmarks.route');
-
+const authentication = require('./basic_auth/auth');
+app.use('/userlogin', authentication);
 app.use('/listallrepos', listrepositoriesRoutes);
 app.use('/bookmarks', bookmarksRoutes);
 
