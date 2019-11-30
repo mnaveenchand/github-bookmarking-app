@@ -20,7 +20,7 @@ Start the service using node from command line.
 Using the endpoints are briefly explained in the following table
 
  |http verb| endpoint | description |
- |---------|:--------:|------------:|
+ |---------|--------|------------|
  |GET	   | `/listallrepos/search/?searchterm=searchstring`* | json response with reposid, name, owner, forks, stars 	| 
  |GET	   | `/bookmarks/list`				     | gives list of bookmarked repositories		     	|
  |GET	   | `/bookmarks/bookmark/:repository_id`	     | allows bookmarking a repository by its id.       	|
@@ -43,7 +43,7 @@ for fetching list of repositories matching the string helloworld
 
 https://gitbookmarkmanager.herokuapp.com/listallrepos/search/?searchterm=helloworld
 
-the response is  
+### Response
 ` [
 {
 reposid: 123808966,
@@ -291,12 +291,14 @@ Note: bookmark field in response indicates if the particular repository is eithe
 
 2. A particular repository can be bookmarked by its id with response as follows
 https://gitbookmarkmanager.herokuapp.com/bookmarks/bookmark/32726038
-with response 
+
+### Response
 `32726038 added to bookmarks list`
 
 3.For List of all bookmarks, the end point  is 
-https://gitbookmarkmanager.herokuapp.com/bookmarks/list and response is 
+https://gitbookmarkmanager.herokuapp.com/bookmarks/list and 
 
+### Response
 `[
 {
 reposid: 171660097,
@@ -324,34 +326,31 @@ forks: 0
 4. To remove a bookmark with repository id, call
 https://gitbookmarkmanager.herokuapp.com/bookmarks/remove/?id=123808
 
-with response as 
+### Response
 `{"data":"removed bookmark 123808 successfully","status":"success"}`
+
+Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
 5. To add a user
 https://gitbookmarkmanager.herokuapp.com/userauth/users
 Content-Type: application/json
-{
-"username": "jim", "password": "pass321"
-}
+`{"username": "jim", "password": "pass321"} `
 
-##Response
-```HTTP/1.1 201 Created X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 27 ETag: W/"1b-LLLX+2ZEFpS3/q3QRo0eBg4uobs" Date: Fri, 29 Nov 2019 22:57:28 GMT Connection: close jim Registration successful```
+### Response
+```
+HTTP/1.1 201 Created X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 27 ETag: W/"1b-LLLX+2ZEFpS3/q3QRo0eBg4uobs" Date: Fri, 29 Nov 2019 22:57:28 GMT Connection: close jim Registration successful
+```
 
 6.Signing in 
 https://gitbookmarkmanager.herokuapp.com/userauth/login
 Content-Type: application/json
-{
-"username": "jim", "password": "pass321"
-}
+`{"username": "jim", "password": "pass321"}`
 
-##Response:
-```HTTP/1.1 200 OK X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 13 ETag: W/"d-fTehZeed1u8bspQcWBIg7+cam1g" Date: Fri, 29 Nov 2019 22:59:51 GMT Connection: close login Success```
+### Response
+```
+HTTP/1.1 200 OK X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 13 ETag: W/"d-fTehZeed1u8bspQcWBIg7+cam1g" Date: Fri, 29 Nov 2019 22:59:51 GMT Connection: close login Success
+```
 
-
-
-
-
-Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
 Taking this project further
 1. Implementing OAuth (updated)
