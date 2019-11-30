@@ -26,7 +26,7 @@ Using the endpoints are briefly explained in the following table
  |GET	   | `/bookmarks/bookmark/:repository_id`	     | allows bookmarking a repository by its id.       	|
  |GET	   | `/bookmarks/remove/?id=repository_id`	     | to delete the bookmark of a repository by its id 	|
  |POST     |`/userauth/users`                            | Signup with username, password                         |
- |POST     |`/userauth/users/login`                      | to login with name, password                         |
+ |POST     |`/userauth/users/login`                      | to login with username, password                         |
  
 searchstring = <String> (required)
 Optional parameters: sort,order, valid qualifiers
@@ -326,6 +326,30 @@ https://gitbookmarkmanager.herokuapp.com/bookmarks/remove/?id=123808
 
 with response as 
 `{"data":"removed bookmark 123808 successfully","status":"success"}`
+
+5. To add a user
+https://gitbookmarkmanager.herokuapp.com/userauth/users
+Content-Type: application/json
+{
+"username": "jim", "password": "pass321"
+}
+
+##Response
+```HTTP/1.1 201 Created X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 27 ETag: W/"1b-LLLX+2ZEFpS3/q3QRo0eBg4uobs" Date: Fri, 29 Nov 2019 22:57:28 GMT Connection: close jim Registration successful```
+
+6.Signing in 
+https://gitbookmarkmanager.herokuapp.com/userauth/login
+Content-Type: application/json
+{
+"username": "jim", "password": "pass321"
+}
+
+##Response:
+```HTTP/1.1 200 OK X-Powered-By: Express Content-Type: text/html; charset=utf-8 Content-Length: 13 ETag: W/"d-fTehZeed1u8bspQcWBIg7+cam1g" Date: Fri, 29 Nov 2019 22:59:51 GMT Connection: close login Success```
+
+
+
+
 
 Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
