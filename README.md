@@ -7,12 +7,18 @@ This App is a RESTful service to manage github bookmarks and tasks involves
 
 Backend part has the following purposes.
 
-1. An endpoint that takes a search term and returns a list of repositories.
+1. An endpoint that takes a search term and return a list of repositories.
 2. An endpoint that allows bookmarking a repository by its id.
 3. An endpoint to get all bookmarked repositories
 4. An endpoint to remove a bookmark
 
-Requirements: [Nodejs](https://nodejs.org/en/) , [Express](https://expressjs.com/)
+Requirements and Dependencies: [Nodejs](https://nodejs.org/en/), 
+[Express v4.17.0](https://expressjs.com/), 
+axios v0.19.0,
+bcrpyt v3.0.6,
+cors v2.8.5,
+express-timeout-handler v2.2.0,
+fs v0.0.1-security
 
 Start the service using node from command line.
 
