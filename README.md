@@ -1,4 +1,4 @@
-# conradchallenge
+# github bookmarks manager
 
 This App is a RESTful service to manage github bookmarks and tasks involves 
 
