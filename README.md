@@ -1,6 +1,6 @@
 # github bookmarks manager
 
-This App is a RESTful service to manage github bookmarks and tasks involves 
+This App is a RESTful service to manage github bookmarks and inovlves following tasks 
 
 1. Backend
 2. Frontend
