@@ -22,7 +22,9 @@ fs v0.0.1-security
 
 Start the service using node from command line.
 
-`C:\conradchallenge>node index`
+```
+C:\conradchallenge>node index
+```
 Using the endpoints are briefly explained in the following table
 
  |http verb| endpoint | description |
@@ -50,7 +52,8 @@ for fetching list of repositories matching the string helloworld
 https://gitbookmarkmanager.herokuapp.com/listallrepos/search/?searchterm=helloworld
 
 ### Response
-` [
+```
+[
 {
 reposid: 123808966,
 name: "undefined-is-a-function",
@@ -291,7 +294,8 @@ stars: 1,
 forks: 3,
 bookmark: false
 }
-] `
+] 
+```
 
 Note: bookmark field in response indicates if the particular repository is either by bookmarked or not by a boolean.
 
@@ -299,13 +303,16 @@ Note: bookmark field in response indicates if the particular repository is eithe
 https://gitbookmarkmanager.herokuapp.com/bookmarks/bookmark/32726038
 
 ### Response
-`32726038 added to bookmarks list`
+```
+32726038 added to bookmarks list
+```
 
 3.For List of all bookmarks, the end point  is 
 https://gitbookmarkmanager.herokuapp.com/bookmarks/list and 
 
 ### Response
-`[
+```
+[
 {
 reposid: 171660097,
 name: "undefined-medium",
@@ -327,20 +334,25 @@ owner: "Colmanetg",
 stars: 2,
 forks: 0
 }
-]`
+]
+```
 
 4. To remove a bookmark with repository id, call
 https://gitbookmarkmanager.herokuapp.com/bookmarks/remove/?id=123808
 
 ### Response
-`{"data":"removed bookmark 123808 successfully","status":"success"}`
+```
+{"data":"removed bookmark 123808 successfully","status":"success"}
+```
 
 Then call the api for list of bookmarks, notice that the bookmark of that repository id is not listed in the response.
 
 5. To add a user
 https://gitbookmarkmanager.herokuapp.com/userauth/users
 Content-Type: application/json
-`{"username": "jim", "password": "pass321"} `
+```
+{"username": "jim", "password": "pass321"}
+```
 
 ### Response
 ```
@@ -350,7 +362,9 @@ HTTP/1.1 201 Created X-Powered-By: Express Content-Type: text/html; charset=utf-
 6.Signing in 
 https://gitbookmarkmanager.herokuapp.com/userauth/login
 Content-Type: application/json
-`{"username": "jim", "password": "pass321"}`
+```
+{"username": "jim", "password": "pass321"}
+```
 
 ### Response
 ```
@@ -359,6 +373,5 @@ HTTP/1.1 200 OK X-Powered-By: Express Content-Type: text/html; charset=utf-8 Con
 
 
 Taking this project further
-1. Implementing OAuth (updated)
-2. Frontend with React and Redux 
+1. Frontend with React and Redux 
 ...will be updated
