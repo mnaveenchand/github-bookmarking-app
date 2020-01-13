@@ -23,7 +23,7 @@ fs v0.0.1-security
 Start the service using node from command line.
 
 ```
-C:\conradchallenge>node index
+C:\appserver>node index
 ```
 Using the endpoints are briefly explained in the following table
 
