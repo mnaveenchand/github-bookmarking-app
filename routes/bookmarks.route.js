@@ -50,7 +50,7 @@ router.get('/bookmark/:id',async(request, response)=> {
     }
   })
 
-  router.get('/remove',(request, response) => {
+  router.delete('/remove',(request, response) => {
     try{
       let removeid = request.query.id;
       fs.readFile('./Bookmarks.json', (err, data) => {

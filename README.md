@@ -32,7 +32,7 @@ Using the endpoints are briefly explained in the following table
  |GET	   | `/listallrepos/search/?searchterm=searchstring`* | json response with reposid, name, owner, forks, stars 	| 
  |GET	   | `/bookmarks/list`				     | gives list of bookmarked repositories		     	|
  |GET	   | `/bookmarks/bookmark/:repository_id`	     | allows bookmarking a repository by its id.       	|
- |GET	   | `/bookmarks/remove/?id=repository_id`	     | to delete the bookmark of a repository by its id 	|
+ |DELETE	   | `/bookmarks/remove/?id=repository_id`	     | to delete the bookmark of a repository by its id 	|
  |POST     |`/userauth/users`                            | Signup with username, password                         |
  |POST     |`/userauth/users/login`                      | to login with username, password                         |
  
@@ -373,5 +373,5 @@ HTTP/1.1 200 OK X-Powered-By: Express Content-Type: text/html; charset=utf-8 Con
 
 
 Taking this project further
-1. Frontend with React and Redux 
+1. Adding tests with chai and mocha 
 ...will be updated

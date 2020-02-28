@@ -29,6 +29,6 @@ function Bookmarkstatus(repositoryid){
     let booksmarksRaw = fs.readFileSync('./Bookmarks.json');
     let bookmarklist = JSON.parse(booksmarksRaw);
     const index = bookmarklist.findIndex(x => x.reposid === Number(repositoryid));
-    if(index>=0) {return true} else {return false};
+    return index>=0; 
 }
 module.exports = router;
